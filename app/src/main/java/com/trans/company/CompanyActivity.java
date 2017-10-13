@@ -21,7 +21,7 @@ import butterknife.ButterKnife;
 /**
  * 企业端首页
  */
-public class CompanyActivity extends BaseActivity implements View.OnClickListener, RadioGroup.OnCheckedChangeListener{
+public class CompanyActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener{
 
     @BindView(R.id.home)
     RadioButton home;
@@ -48,6 +48,9 @@ public class CompanyActivity extends BaseActivity implements View.OnClickListene
     @Override
     protected void initView(Bundle savedInstanceState) {
         ButterKnife.bind(this);
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        mViewPager.setAdapter(adapter);
+        mRadioGroup.setOnCheckedChangeListener(this);
         mRadioGroup.check(R.id.home);
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -82,12 +85,6 @@ public class CompanyActivity extends BaseActivity implements View.OnClickListene
 
             }
         });
-    }
-
-
-    @Override
-    public void onClick(View v) {
-
     }
 
     @Override
