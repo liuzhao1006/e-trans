@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">用车管理</string>
+    <string name="hint_user">用户名</string>
+    <string name="hint_password">密码</string>
+    <string name="login_info">忘记密码?请联系管理员</string>
+    <string name="login">登录</string>
+    <!--主框架-->
+    <string name="home">首页</string>
+    <string name="supervise">监管</string>
+    <string name="security">安全管理</string>
+    <string name="me">我</string>
+
+</resources>
