@@ -7,13 +7,13 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.trans.R;
 import com.trans.baselibrary.base.BaseActivity;
 import com.trans.baselibrary.widget.NoScrollViewPager;
+import com.trans.factory.FragmentFactory;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -21,7 +21,7 @@ import butterknife.ButterKnife;
 /**
  * 企业端首页
  */
-public class CompanyActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener{
+public class TransCompanyActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener {
 
     @BindView(R.id.home)
     RadioButton home;
@@ -42,7 +42,7 @@ public class CompanyActivity extends BaseActivity implements RadioGroup.OnChecke
 
     @Override
     protected int getContentViewLayoutID() {
-        return R.layout.activity_company;
+        return R.layout.activity_trans_company;
     }
 
     @Override
@@ -60,7 +60,7 @@ public class CompanyActivity extends BaseActivity implements RadioGroup.OnChecke
 
             @Override
             public void onPageSelected(int position) {
-                switch (position){
+                switch (position) {
                     case 0:
                         home.setChecked(true);
                         mRadioGroup.check(R.id.home);
@@ -89,7 +89,7 @@ public class CompanyActivity extends BaseActivity implements RadioGroup.OnChecke
 
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
-        switch (checkedId){
+        switch (checkedId) {
             case R.id.home:
                 mViewPager.setCurrentItem(0, false);
                 break;
@@ -107,27 +107,28 @@ public class CompanyActivity extends BaseActivity implements RadioGroup.OnChecke
         }
     }
 
-   class ViewPagerAdapter extends FragmentPagerAdapter{
+    class ViewPagerAdapter extends FragmentPagerAdapter {
 
         private String[] mTables;
-       public ViewPagerAdapter(FragmentManager fm) {
-           super(fm);
-           mTables = getResources().getStringArray(R.array.tab_company);
-       }
 
-       @Override
-       public CharSequence getPageTitle(int position) {
-           return mTables[position];
-       }
+        public ViewPagerAdapter(FragmentManager fm) {
+            super(fm);
+            mTables = getResources().getStringArray(R.array.tab_company);
+        }
 
-       @Override
-       public Fragment getItem(int position) {
-           return null;
-       }
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mTables[position];
+        }
 
-       @Override
-       public int getCount() {
-           return mTables.length;
-       }
-   }
+        @Override
+        public Fragment getItem(int position) {
+            return FragmentFactory.getFragment(position);
+        }
+
+        @Override
+        public int getCount() {
+            return mTables.length;
+        }
+    }
 }

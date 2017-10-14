@@ -1,15 +1,16 @@
-package com.trans;
+package com.trans.login;
 
 import android.os.Bundle;
 import android.support.constraint.Guideline;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.trans.R;
 import com.trans.baselibrary.base.BaseActivity;
-import com.trans.company.CompanyActivity;
+import com.trans.company.TransCompanyActivity;
+import com.trans.employee.TransEmployeeActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -49,7 +50,8 @@ public class LoginActivity extends BaseActivity {
 
     @OnClick(R.id.login)
     public void onViewClicked() {
-        startActivity(CompanyActivity.class);
+        startActivity(TransCompanyActivity.class);
+//        startActivity(TransEmployeeActivity.class);
     }
 
 

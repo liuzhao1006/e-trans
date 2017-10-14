@@ -25,13 +25,12 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:26.1.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-
     //内存泄漏检测工具
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.4'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
@@ -42,5 +41,5 @@ dependencies {
     api 'com.alibaba:fastjson:1.2.38.android'
     //网络请求
     api 'com.yanzhenjie.nohttp:okhttp:1.1.4'
-
+    api files('libs/sun.misc.BASE64Decoder.jar')
 }
